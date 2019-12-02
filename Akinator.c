@@ -239,6 +239,7 @@ int MakeGraphFile(tnode* tree, char* FileName) {
         return -1;
     }
     fprintf(fd, "digraph G{\n");
+    fprintf(fd, "node [style=\"filled\", fillcolor=\"orange\", fontcolor=\"blue\"];\n");
     FPrintGraphNode(tree, fd);
     fprintf(fd, "}\n");
     fclose(fd);
