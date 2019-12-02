@@ -19,6 +19,12 @@ typedef struct _tnode {
     struct _tnode* right;
 } tnode;
 
+typedef struct _tqueue {
+    tnode *tree[MAX_NUM_OF_NODES];
+    int cur;
+    int size;
+} tqueue;
+
 enum {
     LEFT = -1,
     RIGHT = 1
@@ -27,6 +33,21 @@ enum {
 int Ask(const tnode nod);
 int Guess(tnode* nod);
 int GetNewNode(tnode* nod);
-void FPrintNode(const tnode tree, FILE* fd);
+int FPrintNode(tqueue *queue, FILE* fd);
+int QueuePush(tqueue* queue, tnode* nod1);
+
+tnode* TreeConstruct(char* filename);
+int FScanNode(tnode* nod, char* CurStr, FILE* fd);
+
+int SaveTree(tnode* tree, char* filename);
+tnode* MakeBinTree(tqueue* queue);
+int TreeDestruct(tnode* node);
+int TreeDestructChilds(tnode* node);
+
+int MakeGraphFile(tnode* tree, char* FileName);
+int FPrintGraphNode(tnode* node, FILE* fd);
+
+int FPrintLeftNode(tnode *node, FILE* fd);
+int FPrintRightNode(tnode *node, FILE* fd);
 
 #endif /* AKINATOR_H_ */
